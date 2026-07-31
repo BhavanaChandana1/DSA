@@ -1,0 +1,50 @@
+//Mathematical GCD approach - O(Log(min(a,b) + sqrt(gcd(a,b)) 
+// in worst case sqrt(gcd(a,b) not ignorable otherwise  O(Log(min(a,b)
+//2427
+class Solution {
+    public int commonFactors(int a, int b) {
+       int gcd=gcdf(a,b);
+       int count=0;
+       for(int i=1;i*i<=gcd;i++){ 
+            if(gcd%i==0){
+                count++;
+                int z=gcd/i;
+                if(i!=z){
+                    count++;
+                }
+            }
+       }
+       return count;
+}
+       //gcd
+        int gcdf(int a,int b){
+           while(b!=0){
+            int temp=b;
+            b=a%b;
+            a=temp;
+        }
+        return a;
+        
+    }
+}
+
+
+
+/*class Solution {
+    public int commonFactors(int a, int b) {
+        int min=Math.min(a,b);
+        int count=0;
+        for(int i=1;i*i<=min;i++){ //O(sqrt(min(a,b))
+            if(a%i==0 && b%i==0){
+                count++;
+            }
+            int t=min/i;
+            if(i!=t && a%t==0 && b%t==0){
+                count++;
+            }
+
+        }
+        return count;
+        
+    }
+}*/
