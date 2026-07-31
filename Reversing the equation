@@ -1,0 +1,20 @@
+class Solution {
+
+    String reverseEqn(String S) {
+        StringBuilder r= new StringBuilder();
+        StringBuilder dup=new StringBuilder();
+        for(int i=S.length()-1; i>=0;i--){
+            char ch=S.charAt(i);
+            if(ch=='*'|| ch=='+' || ch=='/'|| ch=='-'){
+                r.append(dup.reverse());
+                r.append(ch);
+                dup.setLength(0);
+            }else{
+                dup.append(ch);
+            }
+            
+        }
+        r.append(dup.reverse());
+        return r.toString() ;
+    }
+}
