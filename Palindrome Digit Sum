@@ -1,0 +1,22 @@
+class Solution {
+    boolean isDigitSumPalindrome(int n) {
+        // code here
+        int temp=n;
+        int sum=0;
+        while(temp!=0){
+            int a=temp%10;
+            sum+=a;
+            temp/=10;
+            
+        }
+        temp=sum;
+        int check=0;
+        while(temp!=0){
+            int a=temp%10;
+            check=check*10+a;
+            temp/=10;
+            
+        }
+       return sum==check;
+    }
+}
