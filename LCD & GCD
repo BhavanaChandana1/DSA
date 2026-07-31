@@ -1,6 +1,7 @@
 class Solution {
 	public static int[] lcmAndGcd(int a, int b) {
 		// code here
+		// LCM = product/gcd
 		int x = a;
 		int y = b;
 		while (y != 0) {
