@@ -1,0 +1,42 @@
+//Time-O(n), Space - O(1)
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+        // code here
+        int n=arr.length;
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            int val=(arr[i]-1)%n;
+            arr[val]+=n;
+            
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>2*n){
+                a.add(i+1);
+            }
+        }
+        return a;
+        
+    }
+}
+
+
+//Time-O(n), Space - O(n)
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+        // code here
+        int[] test= new int[arr.length];
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            test[arr[i]-1]++;
+        }
+        
+        for(int i=0;i<test.length;i++){
+            if(test[i]==2){
+                a.add(i+1);
+            }
+        }
+        return a;
+        
+    }
+}
