@@ -1,0 +1,34 @@
+class Solution {
+//Time-O(1), space-O(1)
+    int missingNum(int arr[]) {
+        int n=arr.length+1;
+        int xor=0;
+        for(int i=1; i<=n;i++){
+            xor^=i;
+        }
+        for(int a:arr){
+            xor^=a;
+        }
+        
+        return xor;
+    }
+}
+
+// Time - O(n),space- O(n)
+class Solution {
+    int missingNum(int arr[]) {
+        boolean a[]=new boolean[arr.length+1];
+        for(int n:arr){
+             a[n-1]=true;
+        }
+        for(int i=0;i<a.length;i++){
+            if(a[i]==false){
+                return i+1; 
+            }
+        }
+        
+        return 0;
+        
+        
+    }
+}
