@@ -1,0 +1,49 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        int[] mapS=new int[256];
+        int[] mapT=new int[256];
+        if(s.length()!=t.length()){
+            return false;
+        }
+        for(int i=0;i<s.length();i++){
+            char a=s.charAt(i);
+            char b=t.charAt(i);
+            if(mapS[a]!=mapT[b]){
+                return false;
+            }
+            mapS[a]=i+1;
+            mapT[b]=i+1;
+        }
+        return true;
+        
+    }
+}
+
+
+//t-O(n^2),s-O(1)
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        int[] a= new int[128];
+        if(s.length()!=t.length()){
+            return false;
+        }
+        for(int i=0;i<s.length();i++){
+            int b=s.charAt(i)-1;
+            int c=t.charAt(i)-1;
+            if(a[b]==0){
+                for(int j=0;j<a.length;j++){
+                    if (a[j]==c){
+                        return false;
+                    }
+                }
+                a[b]=c;
+            }else if(a[b]!=c){
+                return false;
+            }
+            
+
+        }
+        return true;
+        
+    }
+}
