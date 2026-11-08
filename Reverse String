@@ -1,0 +1,70 @@
+//Two Pointers approach - Optimal - Time -O(n), Space - O(1)
+class Solution {
+    public void reverseString(char[] s) {
+        int left=0;
+        int right=s.length-1;
+        while(left<right) {
+            char temp=s[right];
+            s[right]=s[left];
+            s[left]=temp;
+            left++;
+            right--;
+        }
+    }
+   
+}
+
+//String Approach - Using StringBuilder , time - O(n), auxiliary space - O(n),not inplace
+class Solution {
+    public void reverseString(char[] s) {
+        String str = new String(s);
+        StringBuilder sb= new StringBuilder(str);
+        sb.reverse();
+
+        for(int i=0; i<s.length;i++){
+            s[i]=sb.charAt(i);
+        }
+    }
+   
+}
+
+//Time - O(N), Auxiliary space -O(N), INPlace
+class Solution {
+    public void reverseString(char[] s) {
+        reversetheString(s,0,s.length-1);    
+    }
+    public void reversetheString(char[] s, int left, int right) {
+
+        if(left>=right){    
+            return;
+        }
+        char temp=s[right];
+        s[right]=s[left];
+        s[left]=temp;
+        reversetheString(s,left+1,right-1);
+        
+    }
+}
+
+//tried - Time - O(N), Auxiliary space -O(N), INPlace
+class Solution {
+    public void reverseString(char[] s) {
+        int i=0;
+        reversetheString(s,i);
+      
+    }
+    public void reversetheString(char[] s, int i) {
+
+        if(i>=s.length/2){
+         
+            return;
+        }
+
+        int j = s.length-i-1;
+        char temp=s[j];
+        s[j]=s[i];
+        s[i]=temp;
+        reversetheString(s,i+1);
+        
+    }
+}
