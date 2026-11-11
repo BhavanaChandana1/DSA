@@ -1,0 +1,44 @@
+class Solution {
+    public List<String> readBinaryWatch(int turnedOn) {
+        int[] h={8,4,2,1};
+        int[] m={32,16,8,4,2,1};
+        List<String> a = new ArrayList<>();
+        return timeCount(h,m,"",a,turnedOn,0,0,0,0,0);
+
+        
+    }
+    public List<String> timeCount(int[] h, int[] m, String s,List<String> a, int turnedOn, int ledCount, int hc, int mc,int hoursCount, int minutesCount){
+        if(ledCount==turnedOn){
+            s=String.valueOf(hoursCount);
+            s=s+":";
+            if(minutesCount==0 || minutesCount<10){
+                s=s+"0";
+            }
+            s=s+String.valueOf(minutesCount);
+            System.out.println(s);
+            a.add(s);
+            return a;
+        }
+        if(mc<m.length){
+            minutesCount+=m[mc];
+            if(minutesCount<60){
+                timeCount(h,m,s,a,turnedOn,ledCount+1,hc,mc+1,hoursCount,minutesCount);
+            }
+                minutesCount-=m[mc];
+                timeCount(h,m,s,a,turnedOn,ledCount,hc,mc+1,hoursCount,minutesCount);
+        }
+       
+        if(hc<h.length && mc==m.length){
+            hoursCount+=h[hc];
+            if(hoursCount<12){
+                timeCount(h,m,s,a,turnedOn,ledCount+1,hc+1,mc,hoursCount,minutesCount);
+            }
+            hoursCount-=h[hc];
+            timeCount(h,m,s,a,turnedOn,ledCount,hc+1,mc,hoursCount,minutesCount);
+
+        }
+        
+
+    return a;
+    }
+}
